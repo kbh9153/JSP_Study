@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="insert01_process.jsp">
+	<form method="post" action="insert05_process.jsp">
 		<p> 아이디 : <input type="text" name="id"> </p>	<!-- id 변수 -->
 		<p> 패스워드 : <input type="password" name="passwd"> </p>	<!-- passwd 변수 -->
 		<p> 이름 : <input type="text" name="name"> </p>	<!-- name 변수 -->
 		<p> 이메일 : <input type="text" name="email">	</p> <!-- email 변수 -->
-		<p> <input type="submit" values="전송"> </p>
+		<p> <input type="submit" value="전송"> </p>
 	</form>
 </body>
 </html>
