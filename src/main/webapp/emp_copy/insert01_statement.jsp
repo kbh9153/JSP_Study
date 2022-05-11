@@ -16,7 +16,7 @@
 		<p>급여 : <input type="number" name="salary"> </p>
 		<p>상여금 : <input type="number" name="commission"> </p>
 		<p>부서번호 : <input type="number" name="dno"> </p>
-		<p> <input type="submit" values="전송"> </p>
+		<p> <input type="submit" value="전송"> </p>
 	</form>
 </body>
 </html>
