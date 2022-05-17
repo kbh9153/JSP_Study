@@ -5,7 +5,7 @@
 <HEAD>
 <SCRIPT type="text/javascript">
 	function check() {
-		with (document.msgwrite) {
+		with (document.msgwrite) {	// document : 문서전체, msgwrite : form
 			if (subject.value.length == 0) {
 				alert("제목을 입력해 주세요!!");
 				subject.focus();
@@ -56,8 +56,7 @@
 			} else {
 		%>
 	
-	<FORM name="msgwrite" method=POST
-		action="freeboard_upddb.jsp?id=<%=id%>&page=<%=p%>">
+	<FORM name="msgwrite" method=POST action="freeboard_upddb.jsp?id=<%=id%>&page=<%=p%>">
 		<table width="600" cellspacing="0" cellpadding="2" align="center">
 			<tr>
 				<td colspan="2" bgcolor="#1F4F8F" height="1"></td>

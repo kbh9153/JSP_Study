@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Column의 특정 레코드를 읽는 페이지</title>
 </head>
 <body>

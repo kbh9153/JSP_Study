@@ -6,10 +6,10 @@
 <HTML>
 <HEAD>
 <TITLE>게시판</TITLE>
-<link href="freeboard.css" rel="stylesheet" type="text/css">
-<SCRIPT language="javascript">
+<link href="filegb.css" rel="stylesheet" type="text/css">
+<SCRIPT type="text/javascript">
 	function check() {
-		with (document.msgsearch) {
+		with (document.msgsearch) {	/* msgsearch(form 태그) */
 			if (sval.value.length == 0) {
 				alert("검색어를 입력해 주세요!!");
 				sval.focus();
@@ -37,27 +37,27 @@
 <BODY>
 
 	<P>
-	<P align=center>
-		<FONT color=#0000ff face=굴림 size=3><STRONG>자유 게시판</STRONG></FONT>
-	</P>
+		<P>
+			<FONT color=#0000ff face=굴림 size=3><STRONG>자유 게시판</STRONG></FONT>
+		</P>
 	<P>
-	<CENTER>
-		<TABLE border=0 width=600 cellpadding=4 cellspacing=0>
-			<tr align="center">
-				<td colspan="5" height="1" bgcolor="#1F4F8F"></td>
-			</tr>
-			<tr align="center" bgcolor="#87E8FF">
-				<td width="42" bgcolor="#DFEDFF"><font size="2">번호</font></td>
-				<td width="340" bgcolor="#DFEDFF"><font size="2">제목</font></td>
-				<td width="84" bgcolor="#DFEDFF"><font size="2">등록자</font></td>
-				<td width="78" bgcolor="#DFEDFF"><font size="2">날짜</font></td>
-				<td width="49" bgcolor="#DFEDFF"><font size="2">조회</font></td>
-			</tr>
-			<tr align="center">
-				<td colspan="5" bgcolor="#1F4F8F" height="1"></td>
-			</tr>
+		<main>
+			<TABLE border=0 width=600 cellpadding=4 cellspacing=0>
+				<tr align="main">
+					<td colspan="5" height="1" bgcolor="#1F4F8F"></td>
+				</tr>
+				<tr align="main" bgcolor="#87E8FF">
+					<td width="42" bgcolor="#DFEDFF"><font size="2">번호</font></td>
+					<td width="340" bgcolor="#DFEDFF"><font size="2">제목</font></td>
+					<td width="84" bgcolor="#DFEDFF"><font size="2">등록자</font></td>
+					<td width="78" bgcolor="#DFEDFF"><font size="2">날짜</font></td>
+					<td width="49" bgcolor="#DFEDFF"><font size="2">조회</font></td>
+				</tr>
+				<tr align="main">
+					<td colspan="5" bgcolor="#1F4F8F" height="1"></td>
+				</tr>
 
-			<%
+				<%
 			// vector : 멀티스레드 환경에서 사용, 모든 메소드가 동기화 처리가 되어있음
 				Vector name = new Vector();	// DB의 Name 값만 저장하는 벡터
 				Vector inputdate = new Vector();	// DB의 inputdate 값만 저장하는 벡터
@@ -183,36 +183,37 @@
 								out.println("<TR bgcolor='#F4F4F4' onMouseOver=\" bgColor='#DFEDFF'\" onMouseOut=\"bgColor='#F4F4F4'\">");
 							}
 
-							out.println("<TD align=center>");
+							out.println("<TD align=main>");
 							out.println(id + "</TD>");
 							out.println("<TD>");
-
+	
+							// step : 글의 깊이, 0 - 처음글, 1 - 답변글, 2 - 답변의 답변글 ...
 							int stepi = ((Integer)step.elementAt(j)).intValue();
 							int imgcount = j - startrow;
 
-							if (stepi > 0) {
+							if (stepi > 0) {	// 답변글인 경우
 								for (int count = 0; count < stepi; count++) {
-									out.print("&nbsp;&nbsp;");
+									out.print("&nbsp;&nbsp;");	// 답변글일 경우 공백 2칸 처리
 									out.println("<IMG name=icon" + imgcount + " src=image/arrow.gif>");
 									out.print("<A href=freeboard_read.jsp?id=");
 									out.print(keyid.elementAt(j) + "&page=" + where);
 									out.print(" onmouseover=\"rimgchg(" + imgcount + ",1)\"");
 									out.print(" onmouseout=\"rimgchg(" + imgcount + ",2)\">");
 								}
-							} else {
+							} else {	// 처음 글인 경우
 								out.println("<IMG name=icon" + imgcount + " src=image/close.gif>");
 								out.print("<A href=freeboard_read.jsp?id=");
 								out.print(keyid.elementAt(j) + "&page=" + where);
-								out.print(" onmouseover=\"imgchg(" + imgcount + ",1)\"");
-								out.print(" onmouseout=\"imgchg(" + imgcount + ",2)\">");
+								out.print(" onmouseover=\"imgchg(" + imgcount + ", 1)\"");
+								out.print(" onmouseout=\"imgchg(" + imgcount + ", 2)\">");
 							}
 							
 							out.println(subject.elementAt(j) + "</TD>");
-							out.println("<TD align=center>");
+							out.println("<TD align=main>");
 							out.println(em + "</TD>");
-							out.println("<TD align=center>");
+							out.println("<TD align=main>");
 							out.println(inputdate.elementAt(j) + "</TD>");
-							out.println("<TD align=center>");
+							out.println("<TD align=main>");
 							out.println(rcount.elementAt(j) + "</TD>");
 							out.println("</TR>");
 
@@ -233,8 +234,8 @@
 				}
 
 				if (wheregroup > 1) { // 현재 위치한 페이지그룹이 1 초과할 때 [처음], [이전] 버튼 링크화
-					out.println("[<A href=freeboard_list.jsp?gogroup=1>처음</A>]");
-					out.println("[<A href=freeboard_list.jsp?gogroup=" + priorgroup + ">이전</A>]");
+					out.println("[<a href=freeboard_list.jsp?gogroup=1>처음</a>]");
+					out.println("[<a href=freeboard_list.jsp?gogroup=" + priorgroup + ">이전</a>]");
 				} else { // 현재 위치한 페이지그룹이 1 이하일 때 [처음], [이전] 버튼은 링크가 아님
 					out.println("[처음]");
 					out.println("[이전]");
@@ -245,21 +246,22 @@
 						if (jj == where) { // where : 현재 자신이 위치한 페이지
 							out.println("[" + jj + "]"); // jj가 where와 같을 때 링크 처리를 안함
 						} else {
-							out.println("[<A href=freeboard_list.jsp?go=" + jj + ">" + jj + "</A>]");
+							out.println("[<a href=freeboard_list.jsp?go=" + jj + ">" + jj + "</a>]");
 						}
 					}
 				}
 
 				if (wheregroup < totalgroup) {
-					out.println("[<A href=freeboard_list.jsp?gogroup=" + nextgroup + ">다음</A>]");
-					out.println("[<A href=freeboard_list.jsp?gogroup=" + totalgroup + ">마지막</A>]");
+					out.println("[<a class='pagination' href=freeboard_list.jsp?gogroup=" + nextgroup + ">다음</a>]");
+					out.println("[<a class='pagination' href=freeboard_list.jsp?gogroup=" + totalgroup + ">마지막</a>]");
 				} else {
 					out.println("[다음]");
 					out.println("[마지막]");
 				}
 				out.println("전체 글수 :" + totalrows);
 			%>
-<!--<TABLE border=0 width=600 cellpadding=0 cellspacing=0>
+			</TABLE>
+			<!--<TABLE border=0 width=600 cellpadding=0 cellspacing=0>
  <TR>
   <TD align=right valign=bottom>
    <A href="freeboard_write.htm"><img src="image/write.gif" width="66" height="21" border="0"></A>
@@ -269,7 +271,8 @@
 			<FORM method="post" name="msgsearch" action="freeboard_search.jsp">
 				<TABLE border=0 width=600 cellpadding=0 cellspacing=0>
 					<TR>
-						<TD align=right width="241"><SELECT name=stype>
+						<TD align=right width="241">
+							<SELECT name=stype>	<!-- option value 값이 select의 stype의 변수값으로 들어감 -->
 								<OPTION value=1>이름
 								<OPTION value=2>제목
 								<OPTION value=3>내용
@@ -277,15 +280,24 @@
 								<OPTION value=5>이름+내용
 								<OPTION value=6>제목+내용
 								<OPTION value=7>이름+제목+내용
-						</SELECT></TD>
-						<TD width="127" align="center"><INPUT type=text size="17"
-							name="sval"></TD>
-						<TD width="115">&nbsp;<a href="#" onClick="check();"><img
-								src="image/serach.gif" border="0" align='absmiddle'></A></TD>
-						<TD align=right valign=bottom width="117"><A
-							href="freeboard_write.htm"><img src="image/write.gif"
-								border="0"></TD>
+							</SELECT>
+						</TD>
+						<TD width="127" align="main">
+							<INPUT type=text size="17" name="sval" />
+						</TD>
+						<TD width="115">&nbsp;
+							<a href="#" onClick="check();">
+								<img src="image/serach.gif" border="0" align='absmiddle' />
+							</a>
+						</TD>
+						<TD align=right valign=bottom width="117">
+							<a href="freeboard_write.htm">
+								<img src="image/write.gif" border="0">
+							</a>
+						</TD>
 					</TR>
 				</TABLE>
-			</FORM></BODY>
+			</FORM>
+		</main>
+</BODY>
 </HTML>

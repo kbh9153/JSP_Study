@@ -22,23 +22,26 @@ request.setCharacterEncoding("euc-kr");
 	int cnt = 0;
 	int pos = 0;
 	
-	String cont = request.getParameter("content");
+	String cont = request.getParameter("content");	// 글 내용
 
-	if (cont.length() == 1) {
+	if (cont.length() == 1) {	// 글 내용이 텍스트 1자라면
 		cont = cont + " ";
 	}
 	
-	while ((pos = cont.indexOf("\'", pos)) != -1) {
-		String left = cont.substring(0, pos);
-		String right = cont.substring(pos, cont.length());
-		cont = left + "\'" + right;
+	// textarea 안에 ' 가 들어가면 DB에 Insert할 때 에러발생
+	
+	// ' 입력할 수 있도록 처리 -> Update, Insert 때 반드시 처리해줘야함
+	while ((pos = cont.indexOf("\'", pos)) != -1) {	// -1 : 값이 존재하지 않을 때
+		String left = cont.substring(0, pos);	// 컨텐츠 첫번째 텍스트 : ' 
+		String right = cont.substring(pos, cont.length());	// 텍스트 전
+		cont = left + "\'" + right;	// '\'텍스트 -> "'\'텍스트"
 		pos += 2;
 	}
 
 	int id = Integer.parseInt(request.getParameter("id"));
 
 	try {
-		sql = "select * from freeboard where id=? ";
+		sql = "select * from freeboard where id = ?";
 		
 		st = conn.prepareStatement(sql);
 		st.setInt(1, id);

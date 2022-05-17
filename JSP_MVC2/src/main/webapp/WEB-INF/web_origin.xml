@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>	<!-- web.xml은 톰캣 서비스가 시작될 때 각종 설정을 읽어서 톰캣에 적용. 톰캣 서비스를 재시작하여야 web.xml의 수정사항이 적용
+				주의! web.xml이 오타 및 에러 발생시 톰캣 작동 불가
+				web.xml을 설정하면 각각의 JSP 페이지에서 설정하지 않아도 됨 -->
+  <display-name>MVC_M2</display-name>
+  <welcome-file-list>	<!-- URL에 프로젝트명까지만 검색하면 해당 리스트에 있는 파일들을 순서대로 하나씩 출력(index.html 출력, index.html이 없으면 index.jsp 출력) -->
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>kbh.html</welcome-file>
+  </welcome-file-list>
+</web-app>

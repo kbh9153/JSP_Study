@@ -93,6 +93,13 @@
 %>
 
 <!-- 글이 다 입력되면 해당 데이터를 freeboard_list.jsp로 전송 -->
-<jsp:forward page = "freeboard_list.jsp"/>	
+<jsp:forward page = "freeboard_list.jsp"></jsp:forward>
+
+<!-- 
+	페이지 이동
+	
+	jsp:forward	: 서버단에서 페이지를 이동(서버 -> 서버), 클라이언트의 기존 URL 정보가 변경되지 않음
+	response.sendRedirect : 클라이언트의 페이지 재요청으로 페이지 이동, 이동하는 페이지로 URL 정보가 변경됨
+ -->
 </body>
 </html>
