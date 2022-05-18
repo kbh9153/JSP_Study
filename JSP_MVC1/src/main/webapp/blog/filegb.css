@@ -1,0 +1,119 @@
+/* CSS Document */
+body {
+   margin: 0;
+   font-size: 12px;
+}
+
+.out-table {
+   padding: 0;
+   border-spacing: 0;
+   width: 600px;
+}
+
+.cover-line {
+   background-color: #1f4f8f;
+   height: 3px;
+}
+
+.notice {
+   height: 20px;
+   background-color: #dfedff;
+   text-align: center;
+   font-size: 14px;
+   font-weight: 700;
+   height: 30px;
+}
+
+.content-style1 {
+   background-color: #f4f4f4;
+   width: 124px;
+   height: 30px;
+   text-align: center;
+}
+
+.input-td {
+   padding-left: 10px;
+   width: 450px;
+   height: 25px;
+}
+
+.input_style {
+   border: 1px solid #bbbbbb;
+   height: 18px;
+   color: #666666;
+   padding-left: 10px;
+}
+
+.input_width1 {
+   width: 200px;
+}
+
+.input_width2 {
+   width: 442px;
+}
+
+.description-td {
+   background-color: #f4f4f4;
+   padding-top: 7px;
+   text-align: center;
+   width: 124px;
+   height: 162px;
+}
+
+.textarea_td {
+   padding: 5px 0 5px 10px;
+   width: 494px;
+   vertical-align: top;
+}
+
+.textarea_style {
+   border: 1px solid #bbbbbb;
+   width: 450px;
+   height: 150px;
+   color: #666666;
+}
+
+.under-line {
+   height: 10px;
+}
+
+.style1 {
+   color: #333333;
+}
+
+.style2 {
+   font-weight: bold;
+}
+
+.in-table {
+   width: 100%;
+   padding: 0;
+   border-spacing: 0;
+   border: 0;
+}
+
+.in-table tr td {
+   text-align: right;
+}
+
+.in-table tr td:first-child {
+   width: 28%;
+}
+
+.in-table tr td:nth-child(2) {
+   width: 51%;
+}
+
+.in-table tr td:nth-child(3) {
+   width: 12%;
+}
+
+.in-table tr td:last-child {
+   width: 9%;
+}
+
+.check-img {
+   width: 46px;
+   height: 20px;
+   border: 0;
+}
